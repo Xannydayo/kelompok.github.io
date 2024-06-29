@@ -1,5 +1,3 @@
-import { resetWarningCache } from "prop-types";
-
 (function() {
   "use strict";
 
@@ -69,8 +67,6 @@ import { resetWarningCache } from "prop-types";
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
-
-  // document.getElementById('hero', addEventListener(onclick = resetWarningCache))
 
 
   function aosInit() {
