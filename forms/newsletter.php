@@ -15,11 +15,20 @@
     die( 'Unable to load the "PHP Email Form" Library!');
   }
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
+  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
+    include_once( $php_email_form ); // Use include_once to avoid multiple inclusions
+  } else {
+    die( 'Unable to load the "PHP Email Form" Library!');
+  }
+
+  if (class_exists('PHP_Email_Form')) {
+    $contact = new PHP_Email_Form;
+    $contact->ajax = true;
+    
+    $contact->to = $receiving_email_address;
+  } else {
+    die('PHP_Email_Form class not found!');
+  }
   $contact->from_email = $_POST['email'];
   $contact->subject ="New Subscription: " . $_POST['email'];
 
