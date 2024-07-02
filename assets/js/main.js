@@ -83,6 +83,31 @@
     selector: '.glightbox'
   });
 
+
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    localStorage.setItem('contactFormData', JSON.stringify(data));
+    document.querySelector('.sent-message').style.display = 'block';
+  });
+
+
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    const name = document.querySelector('input[name="name"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    const subject = document.querySelector('input[name="subject"]').value;
+    const message = document.querySelector('textarea[name="message"]').value;
+
+    if (!name || !email || !subject || !message) {
+      event.preventDefault();
+      alert('Please fill out all fields.');
+    }
+  });
+
   /**
    * Initiate Pure Counter
    */
