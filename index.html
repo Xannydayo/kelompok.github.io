@@ -1236,7 +1236,7 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form id="contactForm" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -1266,6 +1266,19 @@
               </div>
             </form>
           </div><!-- End Contact Form -->
+
+          <script>
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+              event.preventDefault();
+              const formData = new FormData(this);
+              const data = {};
+              formData.forEach((value, key) => {
+                data[key] = value;
+              });
+              localStorage.setItem('contactFormData', JSON.stringify(data));
+              document.querySelector('.sent-message').style.display = 'block';
+            });
+          </script>
 
         </div>
 
