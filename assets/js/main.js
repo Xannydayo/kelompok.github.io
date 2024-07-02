@@ -185,6 +185,43 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Dark mode toggle
+   */
+  const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
+
+  function toggleDarkMode() {
+    document.querySelector('body').classList.toggle('dark-mode');
+  }
+  darkModeToggleBtn.addEventListener('click', toggleDarkMode);
+
+  /**
+   * Smooth scroll for anchor links
+   */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  /**
+   * Lazy load images
+   */
+  const lazyImages = document.querySelectorAll('img.lazy');
+
+  function lazyLoad() {
+    lazyImages.forEach(img => {
+      if (img.getBoundingClientRect().top < window.innerHeight && img.getBoundingClientRect().bottom > 0 && getComputedStyle(img).display !== 'none') {
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+      }
+    });
+  }
+
+  document.addEventListener('scroll', lazyLoad);
+  window.addEventListener('load', lazyLoad);
+
 })();
-
-
