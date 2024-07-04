@@ -8,7 +8,7 @@
     e.addEventListener('submit', function(event) {
       event.preventDefault();
 
-      let thisForm = this;
+      let thisForm = any;
 
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
