@@ -79,10 +79,7 @@
   }
   window.addEventListener('load', aosInit);
 
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
-
+document.addEventListener('scroll', aosInit);
 
   document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -155,9 +152,7 @@
 
   });
 
-  /**
-   * Init swiper sliders
-   */
+
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
       let config = JSON.parse(
@@ -210,9 +205,7 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
-  /**
-   * Dark mode toggle
-   */
+
   const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
 
   function toggleDarkMode() {
@@ -220,9 +213,8 @@
   }
   darkModeToggleBtn.addEventListener('click', toggleDarkMode);
 
-  /**
-   * Smooth scroll for anchor links
-   */
+
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
@@ -232,9 +224,8 @@
     });
   });
 
-  /**
-   * Lazy load images
-   */
+
+
   const lazyImages = document.querySelectorAll('img.lazy');
 
   function lazyLoad() {
