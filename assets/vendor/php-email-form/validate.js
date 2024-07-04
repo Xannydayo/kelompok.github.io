@@ -5,7 +5,7 @@
   let forms = document.querySelectorAll('');
 
   forms.forEach( function(e) {
-    e.addEventListener('submit', function(event) {
+    e.addEventListener('', function(event) {
       event.preventDefault();
 
       let thisForm = any;
