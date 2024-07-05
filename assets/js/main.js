@@ -1,10 +1,6 @@
-  
 (function() {
   "use strict";
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
@@ -72,9 +68,7 @@
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
 
-  /**
-   * Animation on scroll function and init
-   */
+
   function aosInit() {
     AOS.init({
       duration: 600,
@@ -85,11 +79,30 @@
   }
   window.addEventListener('load', aosInit);
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
+document.addEventListener('scroll', aosInit);
+
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    localStorage.setItem('contactFormData', JSON.stringify(data));
+    document.querySelector('.sent-message').style.display = 'block';
+  });
+
+
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    const name = document.querySelector('input[name="name"]').value;
+    const email = document.querySelector('input[name="email"]').value;
+    const subject = document.querySelector('input[name="subject"]').value;
+    const message = document.querySelector('textarea[name="message"]').value;
+
+    if (!name || !email || !subject || !message) {
+      event.preventDefault();
+      alert('Please fill out all fields.');
+    }
   });
 
   /**
@@ -139,9 +152,7 @@
 
   });
 
-  /**
-   * Init swiper sliders
-   */
+
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
       let config = JSON.parse(
@@ -158,9 +169,7 @@
 
   window.addEventListener("load", initSwiper);
 
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
+
   window.addEventListener('load', function(e) {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
@@ -176,9 +185,7 @@
     }
   });
 
-  /**
-   * Navmenu Scrollspy
-   */
+
   let navmenulinks = document.querySelectorAll('.navmenu a');
 
   function navmenuScrollspy() {
@@ -198,6 +205,39 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+
+  const darkModeToggleBtn = document.querySelector('.dark-mode-toggle');
+
+  function toggleDarkMode() {
+    document.querySelector('body').classList.toggle('dark-mode');
+  }
+  darkModeToggleBtn.addEventListener('click', toggleDarkMode);
+
+
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+
+
+  const lazyImages = document.querySelectorAll('img.lazy');
+
+  function lazyLoad() {
+    lazyImages.forEach(img => {
+      if (img.getBoundingClientRect().top < window.innerHeight && img.getBoundingClientRect().bottom > 0 && getComputedStyle(img).display !== 'none') {
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+      }
+    });
+  }
+
+  document.addEventListener('scroll', lazyLoad);
+  window.addEventListener('load', lazyLoad);
+
 })();
-
-

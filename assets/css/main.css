@@ -40,6 +40,21 @@
   scroll-behavior: smooth;
 }
 
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4154f1;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+}
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -423,7 +438,7 @@ h6 {
   .navmenu .listing-dropdown ul li a:hover,
   .navmenu .listing-dropdown ul li .active,
   .navmenu .listing-dropdown ul li .active:hover {
-    color: var(--nav-dropdown-hover-color);
+    color: var (--nav-dropdown-hover-color);
     background-color: var(--nav-dropdown-background-color);
   }
 
@@ -2767,3 +2782,5 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+

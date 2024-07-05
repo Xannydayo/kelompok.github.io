@@ -1,18 +1,14 @@
-/**
-* PHP Email Form Validation - v3.8
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
+
 (function () {
   "use strict";
 
-  let forms = document.querySelectorAll('.php-email-form');
+  let forms = document.querySelectorAll('');
 
   forms.forEach( function(e) {
-    e.addEventListener('submit', function(event) {
+    e.addEventListener('', function(event) {
       event.preventDefault();
 
-      let thisForm = this;
+      let thisForm = any;
 
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
@@ -22,7 +18,6 @@
         return;
       }
       thisForm.querySelector('.loading').classList.add('d-block');
-      thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
       let formData = new FormData( thisForm );
